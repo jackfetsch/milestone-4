@@ -1,0 +1,62 @@
+---
+title: "Gather"
+author: "Jack Fetsch"
+date: "2/28/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+# Calling all of the libraries that I might use
+
+library(tidyverse)
+library(readxl)
+library(janitor)
+library(gt)
+library(rvest)
+```
+
+
+```{r importing the data, include=FALSE}
+
+# Uploading my data for the democratic nominne fundraising. There are a bunch of
+# columns in the front that aren't going to be useful for my analysis, so I
+# subtract them out.
+
+# SOURCE: Illinois Sunshine Campaign Expenditure Data
+
+dem_nominee_spending <- read_csv("Illinois_Sunshine_Committee_Expenditures_JB_for_Governor_2020-02-29.csv", 
+                                 na = c("undefined", NA)) %>%
+                clean_names() %>%
+                select(-id, 
+                       -committee_id, 
+                       -filed_doc_id, 
+                       -etrans_id, 
+                       -candidate_name, 
+                       -office)
+            
+# Uploading my data for the republican nominne fundraising. There are a bunch of
+# columns in the front that aren't going to be useful for my analysis, so I
+# subtract them out.
+
+# SOURCE: Illinois Sunshine Campaign Expenditure Data
+
+rep_nominee_spending <- read_csv("Illinois_Sunshine_Committee_Receipts_Citizens_for_Rauner,_Inc_2020-02-29.csv", 
+                                 na = c("undefined", NA)) %>%
+                clean_names() %>%
+                select(-id, 
+                       -committee_id, 
+                       -filed_doc_id, 
+                       -etrans_id)
+
+# Uploading the data for the 2018 results. Deleting a single column that is full
+# of a bunch of NAs and it cluttering it up.
+
+# SOURCE: Illinois Board of Elections Result Data
+
+results_2018 <- read_csv("GE2018Tot_637185248053240880.csv", 
+                                 na = c("undefined", NA)) %>%
+                clean_names() %>%
+                select(-can_affil_commit)
+
+```

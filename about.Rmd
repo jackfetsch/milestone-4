@@ -1,0 +1,22 @@
+---
+title: "Milestone 4"
+author: "Jack Fetsch"
+date: "03/06/2020"
+output: html_document
+---
+
+[Link](https://github.com/jackfetsch/milestone-4) to My Repo.
+
+## Two Data Sources
+
+### Illinois Board of Elections
+
+The Illinois Board of Elections is the agency that is in charge of arranging the elections that occur in the State of Illinois. The data I use from them is a summary of all of the vote totals for every candidate running in the State of Illinois in the 2018 general election. 
+
+### Illinois Sunshine
+
+Illinois Sunshine is a non-partisan government reform organization. I currently have two spreadsheets from them regarding the campaign expenditures of the candidate at the top of each major party's ticket in the 2019 General Election in Illinois (JB Pritzker on the Democratic side and Bruce Rauner on the Republican side). 
+
+### Progress
+
+Currenty, each sheet is in a workable processed format (I got rid of several variables from each one that made my data difficult to work with!) in my "gather" RMD file. I plan an analysis of how different types of expenditures correlate to vote totals in different regions. At the moment, I want to join Republican vote totals to Republican expenditures and Democrat vote totals to Democrat expenditures to move in this direction.
