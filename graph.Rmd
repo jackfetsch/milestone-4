@@ -1,0 +1,46 @@
+---
+title: "Graph"
+author: "Jack Fetsch"
+date: "3/21/2020"
+output: html_document
+---
+
+# Note: The graph for my 5th milestone is contained in this 
+# RMD file (inside of my graph.Rmd) in the MS4 directory becuase 
+# I already had some data there
+
+
+```{r creating gov results}
+
+# I want to create a graph that gives me an idea as to which candidates 
+# I should be focusing on (which ones got enough of the vote to be significant) 
+# in the 2018 election. A bar graph of each candidate for governor should allow 
+# me to do this. Since my data has all candidates that were on the ballot in the 
+# state, I have to filter for those who ran for governor. However, I filter out 
+# for those who got 1,000 votes or more becuase I don't want joke write-in candidates
+# who didn't raise money in the first place to end up being a part of my fundraiisng
+# analysis.
+
+gov_results <- results_2018 %>%
+  filter(office_name == "GOVERNOR AND LIEUTENANT GOVERNOR") %>%
+  filter(votes > 1000)
+```
+
+
+```{r creating gov results}
+
+# When starting my project, I was beginning to wonder if third party candidates
+# got enough of the vote to be significant enough contenders in the 2018 election
+# to warrant analysis of their fundraising data along with that of the two
+# major party candidates. This graph helps me visualize their role in the
+# results relative to the main R and D candidates and, after looking at it, 
+# reveals that only the top two candidates warrant my analysis for contributions.
+
+gov_results_plot <- ggplot(gov_results, aes(x = can_last_name, votes)) + 
+  geom_bar(stat = "identity", color="black", fill="navy") +
+  xlab("Candidate Last Name") +
+  ylab("Votes in Nov 2018") +
+  ggtitle("Votes for Candidates for IL Governor in 2018") 
+
+gov_results_plot
+```
